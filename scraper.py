@@ -1,12 +1,15 @@
+import sys
+from pymongo import MongoClient
 from urllib.request import Request, urlopen
 from bs4 import BeautifulSoup as soup
-import sys
+from selenium import webdriver
 from kivy.app import App
 from kivy.uix.label import Label
 from kivy.uix.gridlayout import GridLayout
 from kivy.uix.textinput import TextInput
 from kivy.uix.button import Button
 
+client = MongoClient('mongodb://localhost:27017')
 ##############################################################################################
 ########################### Scraped Items ####################################################
 ##############################################################################################
@@ -79,19 +82,19 @@ class MyGrid(GridLayout):
 
         self.add_widget(self.inside)
 
-        # self.submit = Button(text="Submit", font_size=40)
-        # self.submit.bind(on_press=self.pressed)
-        # self.add_widget(self.submit)
+self.submit = Button(text="Submit", font_size=40)
+self.submit.bind(on_press=self.pressed)
+self.add_widget(self.submit)
 
-    # def pressed(self, instance):
-    #     item_one = self.webscra1.text
-    #     item_two = self.webscra2.text
-    #     item_three = self.webscra3.text
+def pressed(self, instance):
+    item_one = self.webscra1.text
+    item_two = self.webscra2.text
+    item_three = self.webscra3.text
 
-    #     print(item_one, item_two, item_three)
-    #     self.webscra1.text = ""
-    #     self.webscra2.text = ""
-    #     self.webscra3.text = ""
+    print(item_one, item_two, item_three)
+    self.webscra1.text = ""
+    self.webscra2.text = ""
+    self.webscra3.text = ""
 
 
 class ScraperApp(App):
